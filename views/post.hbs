@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ post.title }}</title>
+    <!-- 여기에 필요한 스타일 시트를 링크하세요 -->
+</head>
+<body>
+    <h1>{{ post.title }}</h1>
+    <p>{{ post.content }}</p>
+    <p>{{ post.author.id }}</p>
+    <p>{{ post.createdAt }}</p>
+    <div class="comments">
+    <h3>댓글</h3>
+    {{#each post.comments}}
+        <div class="comment">
+            <p>{{this.text}}</p>
+            <p>작성자: {{this.author}}</p>
+        </div>
+    {{/each}}
+</div>
+<p>좋아요 수: {{ post.likes }}</p>
+
+
+</body>
+</html>
+

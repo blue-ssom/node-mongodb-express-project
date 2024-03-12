@@ -16,13 +16,13 @@ router.get('/:postId', async (req, res) => {
         // 게시물 조회
         const post = await client.db("notification_system").collection("post").findOne({ _id: new ObjectId(postId) });
         if (!post) {
-            throw new Error("Post not found");
+            throw new Error("존재하는 게시글이 없습니다.");
         } 
         
         console.log(post)
         
         // 게시물을 HBS에 렌더링하여 클라이언트에 전송
-        // res.render('post', { post: post });
+        res.render('post', { post: post });
 
     } catch (err) {
         console.log(err)
