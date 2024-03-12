@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification Page</title>
+    <style>
+        .notification {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .notification p {
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Notification</h1>
+    {{!-- 메인 페이지로 이동하는 버튼 추가 --}}
+        {{#each notifications}}
+            <div class="notification">
+                <p>{{this.message}}</p>
+                <p>{{this.createdAt}}</p>
+                <a href="#" class="notification-link" data-post-id="{{this.post_id}}">게시글 보기</a>
+            </div>
+        {{/each}}
+    <script>
+        document.querySelectorAll('.notification-link').forEach(link => {
+        link.addEventListener('click', async (event) => {
+            event.preventDefault(); // 기본 동작(링크 이동) 방지
+            const postId = link.dataset.postId;
+            // postId를 사용하여 해당 게시글의 URL로 이동
+            window.location.href = `/post/${postId}`;
+        });
+    });
+    </script>
+</body>
+</html>

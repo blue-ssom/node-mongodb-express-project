@@ -19,7 +19,7 @@ router.post("/", async(req,res) => {
     console.log("Received Password:", password);
 
     try{
-        // 예외처리
+        // 예외처리 - utils.js 수정 필요
         utils.checkRequiredField(id, "아이디")
         utils.checkRequiredField(password, "비밀번호")
 
@@ -36,12 +36,16 @@ router.post("/", async(req,res) => {
         result.message = "로그인 성공!";
         result.data = data;
 
+        // 로그인 성공 시 메인 페이지로 리다이렉트
+        res.redirect("/main");
+         
     } catch (err) {
         console.log(err)
         result.message = err.message
     } finally {
-        if(client) client.close()
-        res.send(result)
+        // if(client) client.close()
+        //res.send(result)
+        
     }
 })
 
