@@ -15,8 +15,8 @@ router.post("/", async(req,res) => {
         "message": "",
         "data" : null
     }
-    console.log("Received ID:", id);
-    console.log("Received Password:", password);
+    console.log("id:", id);
+    console.log("password:", password);
 
     try{
         // 예외처리 - utils.js 수정 필요
@@ -31,13 +31,14 @@ router.post("/", async(req,res) => {
 
          // 세션에 사용자의 _id 저장
         req.session.userId = data._id;
+        console.log("세션 아이디:",req.session.userId)
 
         result.success = true;
         result.message = "로그인 성공!";
         result.data = data;
 
-        // 로그인 성공 시 메인 페이지로 리다이렉트
-        res.redirect("/main");
+        // 로그인 성공 시 게시글 조회 페이지로 리다이렉트
+        res.redirect("/post/all");
          
     } catch (err) {
         console.log(err)
@@ -45,7 +46,6 @@ router.post("/", async(req,res) => {
     } finally {
         // if(client) client.close()
         //res.send(result)
-        
     }
 })
 

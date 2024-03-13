@@ -3,26 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notification Page</title>
-    <style>
-        .notification {
+    <title>알림 페이지</title>
+      <style>
+        .notification-conatiner {
             margin-bottom: 20px;
             padding: 10px;
+            margin-top: 10px;
             border: 1px solid #ccc;
         }
 
-        .notification p {
+        .notification-container p {
             margin-bottom: 5px;
             font-size: 16px;
         }
-
     </style>
 </head>
 <body>
-    <h1>Notification</h1>
+    <h1>알림 페이지</h1>
     {{!-- 메인 페이지로 이동하는 버튼 추가 --}}
         {{#each notifications}}
-            <div class="notification">
+            <div class="notification-container">
                 <p>{{this.message}}</p>
                 <p>{{this.createdAt}}</p>
                 <a href="#" class="notification-link" data-post-id="{{this.post_id}}">게시글 보기</a>

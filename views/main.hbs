@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Page</title>
-    <style>
-        /* CSS 스타일링을 여기에 추가하세요 */
-        .post {
+    <title>메인 페이지</title>
+     <style>
+        .post-container {
             margin-bottom: 20px;
             padding: 10px;
+            margin-top: 10px;
             border: 1px solid #ccc;
         }
         .post-title {
@@ -19,40 +19,39 @@
         .post-content {
             font-size: 16px;
         }
-        .comments {
+        .comment-container {
             margin-top: 10px;
         }
-        .comment {
+        .comment-text {
             margin-bottom: 5px;
             padding: 5px;
             border: 1px solid #eee;
         }
-        .likes {
+        .likes-container {
             margin-top: 10px;
-            font-style: italic;
         }
     </style>
 </head>
 <body>
-    <h1>Main Page</h1>
+    <h1>메인 페이지</h1>
     <a href="/notification">알림 보기</a>
     {{#each posts}}
-    <div class="post">
+    <div class="post-container">
         <h2 class="post-title">{{this.title}}</h2>
         <p class="post-content">{{this.content}}</p>
         <p>작성자 : {{this.author.id }}</p>
         <p>작성 시간 : {{this.createdAt}}</p>
 
         <!-- 댓글 출력 -->
-        <div class="comments">
+        <div class="comment-container">
             <h3>댓글</h3>
             {{#each this.comments}}
-            <div class="comment">{{this}}</div>
+            <div class="comment-text">{{this}}</div>
             {{/each}}
         </div>
 
         <!-- 좋아요 정보 출력 -->
-        <div class="likes">
+        <div class="likes-container">
             <p>좋아요 수: {{this.likes}}</p>
         </div>
     </div>

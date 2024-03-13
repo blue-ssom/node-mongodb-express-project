@@ -1,16 +1,16 @@
-// routes/notification.js
+// 알림과 관련된 API
 
 const express = require('express');
 const router = express.Router();
 const client = require('../../database/db');
 const { ObjectId } = require('mongodb');
 
-
+// 알림 조회
 router.get('/', async (req, res) => {
     try {
-        // 알림 조회
+        // 예외처리 - 세션
+        
         const notifications = await client.db("notification_system").collection("notification").find().sort({ createdAt: -1 }).toArray();
-
         console.log(notifications)
 
         // notification.hbs 템플릿에 알림 데이터 전달하여 렌더링

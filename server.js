@@ -14,6 +14,7 @@ const port = 8000
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 
+
 // 세션 설정
 app.use(session({
     secret: 'secret-key',       
@@ -22,22 +23,24 @@ app.use(session({
     cookie: { maxAge: 1800000 } 
 }))
 
+
 // 템플릿 디렉토리 설정
 app.set('views', __dirname + '/views');
 // hbs 확장자 설정
 app.set('view engine', 'hbs');
 
+
 const loginRouter = require('./src/routes/index');  // index.js파일 import
 app.use('/login', loginRouter);
 
-const mainRouter = require('./src/routes/main');  // main.js파일 import
-app.use('/main', mainRouter);
-
-const notificationRouter = require('./src/routes/notification');  // notification.js파일 import
-app.use('/notification',notificationRouter);
+// const accountRouter = require('./src/routes/account');  // account.js파일 import
+// app.use('/account',accountRouter);
 
 const postRouter = require('./src/routes/post');  // post.js파일 import
 app.use('/post',postRouter);
+
+const notificationRouter = require('./src/routes/notification');  // notification.js파일 import
+app.use('/notification',notificationRouter);
 
 // Web Server 실행 코드
 app.listen(port, () => {
