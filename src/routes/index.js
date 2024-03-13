@@ -43,10 +43,9 @@ router.post("/", async(req,res) => {
     } catch (err) {
         console.log(err)
         result.message = err.message
-    } finally {
-        // if(client) client.close()
-        //res.send(result)
-    }
+        // 에러가 발생한 경우 JSON 응답을 보내기
+        res.send(result)
+    } 
 })
 
 module.exports = router
