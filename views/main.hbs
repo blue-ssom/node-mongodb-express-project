@@ -52,9 +52,26 @@
 
         <!-- 좋아요 정보 출력 -->
         <div class="likes-container">
-            <p>좋아요 수: {{this.likes}}</p>
+            <button class="like-button" data-post-id="{{this._id}}">좋아요</button>
+            {{!-- 좋아요 수 --}}
+            <span class="likes-count">{{this.likes}}</span> 
         </div>
     </div>
     {{/each}}
+
+    <script>
+        // 좋아요 버튼 클릭 이벤트 처리
+        document.querySelectorAll('.like-button').forEach(button => {
+            button.addEventListener('click', async () => {
+                const postId = button.getAttribute('data-post-id');
+                const response = await fetch(`/likes/${postId}`, { method: 'POST' });
+                
+                if (!response) {
+                    throw new Error('서버 오류가 발생했습니다.');
+                }
+            });
+        });
+    </script>
+
 </body>
 </html>

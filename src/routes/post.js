@@ -7,6 +7,11 @@ const { ObjectId } = require('mongodb');
 
 // 게시글 조회
 router.get('/all', async (req, res) => {
+    const result = {
+        "success": false,
+        "message": ""
+    }
+
     try {
         // 예외처리 - 세션
 
@@ -28,13 +33,11 @@ router.get('/all', async (req, res) => {
 
 // 해당 게시글 조회
 router.get('/:postId', async (req, res) => {
+    const postId = req.params.postId;
+    console.log("postId:",postId)
     try {
         // 예외처리 - 세션
         
-        // ObjectId 생성
-        const postId = req.params.postId;
-        console.log("postId:",postId)
-
         // 게시물 조회
         const post = await client.db("notification_system").collection("post").findOne({ _id: new ObjectId(postId) });
         console.log(post)

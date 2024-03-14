@@ -13,13 +13,12 @@ router.post("/", async(req,res) => {
     const result = {
         "success": false,
         "message": "",
-        "data" : null
     }
     console.log("id:", id);
     console.log("password:", password);
 
     try{
-        // 예외처리 - utils.js 수정 필요
+        // 예외처리
         utils.checkRequiredField(id, "아이디")
         utils.checkRequiredField(password, "비밀번호")
 
@@ -31,7 +30,11 @@ router.post("/", async(req,res) => {
 
          // 세션에 사용자의 _id 저장
         req.session.userId = data._id;
+        req.session.userLoginId = data.id;
+
         console.log("세션 아이디:",req.session.userId)
+        console.log("로그인한 아이디:",req.session.userLoginId)
+
 
         result.success = true;
         result.message = "로그인 성공!";
