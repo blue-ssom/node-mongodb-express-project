@@ -4,24 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ post.title }}</title>
+    <style>
+        .post-container {
+            margin-bottom: 20px;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+        }
+        .post-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .post-content {
+            font-size: 16px;
+        }
+        .comment-container {
+            margin-top: 10px;
+        }
+        .comment-text {
+            margin-bottom: 5px;
+            padding: 5px;
+        }
+    </style>
 </head>
 <body>
     <a href="/post/all">메인페이지로 이동</a>
-    <h1>{{ post.title }}</h1>
-    <p>{{ post.content }}</p>
-    <p>{{ post.author.id }}</p>
-    <p>{{ post.createdAt }}</p>
-    <div class="comments">
-    <h3>댓글</h3>
-    {{#each post.comments}}
-        <div class="comment">
-            <p>{{this.text}}</p>
-            <p>작성자: {{this.author}}</p>
+    <div class="post-container">
+        <h1>{{ post.title }}</h1>
+        <p>{{ post.content }}</p>
+        <p>작성자 : {{ post.author.id }}</p>
+        <p>작성 시간 : {{ post.createdAt }}</p>
+        <p> ♥ {{ post.likes }}</p>
+        <div class="comments">
+            <h3>댓글</h3>
+            {{#each post.comments}}
+                <div class="comment">
+                    <p>{{this.text}}</p>
+                    <p>작성자: {{this.author}}</p>
+                </div>
+            {{/each}}
         </div>
-    {{/each}}
-</div>
-<p>좋아요 수: {{ post.likes }}</p>
-
+    </div>
 
 </body>
 </html>

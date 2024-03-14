@@ -33,8 +33,8 @@ app.set('view engine', 'hbs');
 const loginRouter = require('./src/routes/index');  // index.js파일 import
 app.use('/login', loginRouter);
 
-// const accountRouter = require('./src/routes/account');  // account.js파일 import
-// app.use('/account',accountRouter);
+const accountRouter = require('./src/routes/account');  // account.js파일 import
+app.use('/account',accountRouter);
 
 const likesRouter = require('./src/routes/likes');  // likes.js파일 import
 app.use('/likes',likesRouter);

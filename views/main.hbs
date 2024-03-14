@@ -25,7 +25,6 @@
         .comment-text {
             margin-bottom: 5px;
             padding: 5px;
-            border: 1px solid #eee;
         }
         .likes-container {
             margin-top: 10px;
@@ -42,19 +41,16 @@
         <p>작성자 : {{this.author.id }}</p>
         <p>작성 시간 : {{this.createdAt}}</p>
 
+        <!-- 좋아요 출력 -->
+        <button class="like-button" data-post-id="{{this._id}}">♥</button>
+        <span class="likes-count">{{this.likes}}</span> 
+
         <!-- 댓글 출력 -->
         <div class="comment-container">
             <h3>댓글</h3>
             {{#each this.comments}}
             <div class="comment-text">{{this}}</div>
             {{/each}}
-        </div>
-
-        <!-- 좋아요 정보 출력 -->
-        <div class="likes-container">
-            <button class="like-button" data-post-id="{{this._id}}">좋아요</button>
-            {{!-- 좋아요 수 --}}
-            <span class="likes-count">{{this.likes}}</span> 
         </div>
     </div>
     {{/each}}

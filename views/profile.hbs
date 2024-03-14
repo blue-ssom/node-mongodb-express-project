@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>내 정보 페이지</title>
+     <style>
+       .profile-container {
+            margin-bottom: 20px;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .profile-container p {
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>고것을 알려드림</h1>
+    <a href="/post/all">메인페이지로 이동</a>
+    <div class="profile-container">
+        <p>아이디 : {{user.id}}</p>
+        <p>이름 : {{user.name}}</p>
+        <p>이메일 : {{user.email}}</p>
+        <p>전화번호: {{user.phonenumber}}</p>
+    </div>
+</body>
+</html>
