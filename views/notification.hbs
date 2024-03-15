@@ -16,7 +16,6 @@
             margin-bottom: 5px;
             font-size: 16px;
         }
-
     </style>
 </head>
 <body>
@@ -29,6 +28,7 @@
                 <a href="#" class="notification-link" data-post-id="{{this.post_id}}" data-notification-type="{{this.type}}">이동</a>
             </div>
         {{/each}}
+        
     <script>
         document.querySelectorAll('.notification-link').forEach(link => {
         link.addEventListener('click', async (event) => {
@@ -36,16 +36,14 @@
             const postId = link.getAttribute('data-post-id');
             const notificationType = link.getAttribute('data-notification-type'); // 알림 유형을 가져옴
             console.log(notificationType);
-            // postId와 notificationType을 사용하여 해당 동작을 수행
-            if (notificationType === 'post') {
-                window.location.href = `/post/${postId}`;
-            } else if (notificationType === 'like') {
-                // 좋아요 알림인 경우 다른 동작을 수행 개인 정보 페이지로 이동
+            
+            // 좋아요 알림인 경우 개인 정보 페이지로 이동
+            if (notificationType === 'like') {
                 window.location.href = `/account/my`;
-            }
+            } 
 
-            // postId를 사용하여 해당 게시글의 URL로 이동
-            // window.location.href = `/post/${postId}`;
+            // 게시글, 댓글 알림인 경우 해당 게시글의 URL로 이동
+            window.location.href = `/post/${postId}`;
         });
     });
     </script>

@@ -19,12 +19,14 @@
         .post-content {
             font-size: 16px;
         }
-        .comment-container {
-            margin-top: 10px;
-        }
         .comment-text {
-            margin-bottom: 5px;
-            padding: 5px;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .comment-text p {
+            margin: 0;
         }
         .likes-container {
             margin-top: 10px;
@@ -47,10 +49,18 @@
 
         <!-- 댓글 출력 -->
         <div class="comment-container">
-            <h3>댓글</h3>
-            {{#each this.comments}}
-            <div class="comment-text">{{this}}</div>
+            <h4>댓글</h4>
+            {{#each comments}}
+                <div class="comment-text">
+                    <p>작성자: {{this.user_id}}</p>
+                    <p>{{this.message}}</p>
+                </div>
             {{/each}}
+            <form action="/post/comment" method="POST">
+                <input name="comment" placeholder="댓글을 입력하세요"></input>
+                <input type="hidden" name="postId" value="{{ this._id }}">
+                <button type="submit">등록</button>
+            </form>
         </div>
     </div>
     {{/each}}

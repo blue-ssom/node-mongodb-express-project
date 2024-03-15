@@ -28,8 +28,8 @@ router.post("/", async(req,res) => {
             throw new Error("아이디 또는 비밀번호가 잘못되었습니다.")
         }
 
-         // 세션에 사용자의 _id 저장
-        req.session.userId = data._id;
+         // 세션에 사용자의 _id 저장 -  문자열로 변환
+        req.session.userId = data._id.toString();
         req.session.userLoginId = data.id;
 
         console.log("세션 아이디:",req.session.userId)
