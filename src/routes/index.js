@@ -28,13 +28,12 @@ router.post("/", async(req,res) => {
             throw new Error("아이디 또는 비밀번호가 잘못되었습니다.")
         }
 
-         // 세션에 사용자의 _id 저장 -  문자열로 변환
-        req.session.userId = data._id.toString();
-        req.session.userLoginId = data.id;
+        // 세션에 사용자의 _id 저장 - 문자열로 변환
+        req.session.userIdx = data._id.toString();
+        req.session.userId = data.id;
 
-        console.log("세션 아이디:",req.session.userId)
-        console.log("로그인한 아이디:",req.session.userLoginId)
-
+        console.log("세션 idx:", req.session.userIdx)
+        console.log("세션 id:", req.session.userId)
 
         result.success = true;
         result.message = "로그인 성공!";
@@ -46,9 +45,8 @@ router.post("/", async(req,res) => {
     } catch (err) {
         console.log(err)
         result.message = err.message
-        // 에러가 발생한 경우 JSON 응답을 보내기
-        res.send(result)
-    } 
+        res.send(result) // 에러가 발생한 경우 JSON 응답을 보내기
+    }
 })
 
 module.exports = router

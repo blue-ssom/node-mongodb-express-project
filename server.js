@@ -14,7 +14,6 @@ const port = 8000
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 
-
 // 세션 설정
 app.use(session({
     secret: 'secret-key',       
@@ -40,10 +39,11 @@ const likesRouter = require('./src/routes/likes');  // likes.js파일 import
 app.use('/likes',likesRouter);
 
 const postRouter = require('./src/routes/post');  // post.js파일 import
-app.use('/post',postRouter);
+app.use('/post', postRouter);
 
 const notificationRouter = require('./src/routes/notification');  // notification.js파일 import
-app.use('/notification',notificationRouter);
+app.use('/notification', notificationRouter);
+
 
 // Web Server 실행 코드
 app.listen(port, () => {

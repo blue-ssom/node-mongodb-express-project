@@ -11,24 +11,39 @@
             margin-top: 10px;
             border: 1px solid #ccc;
         }
+        .post-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .comment-text {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        .comment-text p {
+            margin: 0;
+        }
     </style>
 </head>
 <body>
     <a href="/post/all">메인페이지로 이동</a>
     <div class="post-container">
-        <h1>{{ post.title }}</h1>
+        <h1 class="post-title">{{ post.title }}</h1>
         <p>{{ post.content }}</p>
         <p>작성자 : {{ post.author.id }}</p>
         <p>작성 시간 : {{ post.createdAt }}</p>
         <p> ♥ {{ post.likes }}</p>
         <h3>댓글</h3>
-        {{#each post.comments}}
-            <div>
-                <p>{{this.text}}</p>
-                <p>작성자: {{this.author}}</p>
-            </div>
-        {{/each}}
-
+        <div class="comment-container">
+            {{#each comments}}
+                <div class="comment-text">
+                    <p>{{this.message}}</p>
+                    <p>작성자: {{this.user.id}}</p>
+                </div>
+            {{/each}}
+        </div>
     </div>
 </body>
 </html>

@@ -8,9 +8,9 @@ const client = new MongoClient(uri); // MongoDB 클라이언트 생성
 async function connectToMongoDB() {
     try {
       await client.connect(); // MongoDB와의 연결 설정
-      console.log("Connected to MongoDB successfully");
+      console.log("MongoDB 연결 성공");
     } catch (error) {
-      console.error("Error connecting to MongoDB:", error);
+      console.error("MongoDB 연결 안됨", error);
     }
   }
   
